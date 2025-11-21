@@ -8,7 +8,7 @@ This code example has a three project structure: CM33 secure, CM33 non-secure, a
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc-edge-wlan-lowpower)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDAwNjYiLCJTcGVjIE51bWJlciI6IjAwMi00MDA2NiIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBXTEFOIGxvdyBwb3dlciIsInJpZCI6InN1cmVzaGt1bWFyYSIsIkRvYyB2ZXJzaW9uIjoiMi4wLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDAwNjYiLCJTcGVjIE51bWJlciI6IjAwMi00MDA2NiIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBXTEFOIGxvdyBwb3dlciIsInJpZCI6InN1cmVzaGt1bWFyYSIsIkRvYyB2ZXJzaW9uIjoiMi4wLjEiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
 See the [Design and implementation](docs/design_and_implementation.md) for the functional description of this code example.
 
@@ -63,19 +63,19 @@ See [Using the code example](docs/using_the_code_example.md) for instructions on
 
 1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector
 
-2. Modify the `WIFI_SSID`, `WIFI_PASSWORD`, and `WIFI_SECURITY` macros to match the credentials of the Wi-Fi network that you want to connect to, which are defined in the *lowpower_task.h* file
+2. Modify the `WIFI_SSID`, `WIFI_PASSWORD`, and `WIFI_SECURITY` macros to match the credentials of the Wi-Fi network that you want to connect to, which are defined in the *proj_cm33_ns/source/lowpower_task.h* file <br>
 
-   > **Note:** See the `cy_wcm_security_t` enumeration in *cy_wcm.h* file to pass the corresponding WCM security type in the `WIFI_SECURITY` macro
+   **Note:** See the `cy_wcm_security_t` enumeration in *cy_wcm.h* file to pass the corresponding WCM security type in the `WIFI_SECURITY` macro 
 
 3. Ensure that your PC is connected to the same Wi-Fi access point (AP) that you have configured in **Step 2**
 
 4. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud
 
-5. After programming, the application starts automatically. The example connects to the AP and suspends the network stack
+5. After programming, the application starts automatically. The example connects to the AP and suspends the network stack <br> 
 
    **Figure 1. Connected to AP and suspended the network stack**
 
-   ![](images/figure1.png)
+   ![](images/figure1.png) 
 
 6. Open the command prompt and ping the IP address displayed on the serial terminal:
 
@@ -83,7 +83,7 @@ See [Using the code example](docs/using_the_code_example.md) for instructions on
    nping -tcp <IP address>
    ```
 
-   The network stack resumes. The device displays the deep sleep and Wi-Fi SDIO bus statistics on the terminal. The USER LED1 (RED LED) is toggled after resuming the network stack after which the network stack is again suspended until network activity is detected
+   The network stack resumes. The device displays the deep sleep and Wi-Fi SDIO bus statistics on the terminal. The USER LED1 on the kit is toggled after resuming the network stack after which the network stack is again suspended until network activity is detected
 
    **Figure 2. Resuming the network stack**
 
@@ -100,29 +100,27 @@ See [Using the code example](docs/using_the_code_example.md) for instructions on
 
 PSOC&trade; Edge E84 Evaluation Kit is a generic kit to evaluate the PSOC&trade; Edge MCU features. To particularly measure the current consumption for this code example, change the following on the hardware.
 
-1. Remove R188 (680 ohm) on the PSOC&trade; Edge E84 system-on-module (SoM) to disable the connectivity power LED (D3) on the SoM <br>
-2. Remove R90 (10k ohm) and populate R93 (4.7k ohm) on the PSOC&trade; Edge E84 SoM to disable the JTAG connected to CYW55513 module
-3. Remove R415 (0 ohm) on the KIT_PSOCE84_EVK to measure the CYW55513 VBAT current across it
+1. Perform the hardware reworks mentioned in the **Rework for PSOC&trade; Edge E84 MCU low power current measurement** section 3.3.16 of the [KIT_PSE84_EVAL PSOC&trade; Edge E84 Evaluation Kit guide](https://www.infineon.com/KIT_PSE84_EVAL_UG)
+2. Remove R188 (680 ohm) on the PSOC&trade; Edge E84 system-on-module (SoM) to disable the connectivity power LED (D3) on the SoM <br>
+3. Remove R90 (10k ohm) and populate R93 (4.7k ohm) on the PSOC&trade; Edge E84 SoM to disable the JTAG connected to CYW55513 module
+4. Remove R415 (0 ohm) on the KIT_PSOCE84_EVK to measure the CYW55513 VBAT current across it
 
 
 ### Measuring current consumption values
 
-1. Connect wires across J25 (VBAT.MCU) on PSOC&trade; Edge E84 Evaluation Kit's baseboard to a Power Analyzer to measure the current consumed by the PSOC&trade; Edge E84 MCU
+1. Connect wires across J25 (VBAT.MCU) for VBAT current and J26 (MCU.1V8) for (VDDD + VDDIO) current on the PSOC&trade; Edge E84 Evaluation Kit's baseboard to a Power Analyzer to measure the current consumed by the PSOC&trade; Edge E84 MCU
 
 2. Similarly, connect wires across R415 on PSOC&trade; Edge E84 Evaluation Kit's baseboard to a Power Analyzer to measure the current consumed by the CYW55513 connectivity module 
 
 3. Program the kit by following the steps in the [Operation](#operation) section
 
-4. Turn on the Power Analyzer to see the current consumption across the CYW55513 connectivity module and the PSOC&trade; Edge E84 MCU as shown in **Figure 3** <br> 
-
-   The spikes in the current across the CYW55513 connectivity module is due to the beacons sent by the AP. The interval and amplitude of this beacon will vary based on the DTIM value, beacon interval, and frequency set in the router's configuration
+4. Turn on the Power Analyzer to see the current consumption across the CYW55513 connectivity module and the PSOC&trade; Edge E84 MCU as shown in **Figure 3** <br> <br>  The spikes in the current across the CYW55513 connectivity module is due to the beacons sent by the AP. The interval and amplitude of this beacon will vary based on the DTIM value, beacon interval, and frequency set in the router's configuration
 
    **Figure 3. Sample Power Analyzer output**
 
    ![](images/figure3.png)
 
    Note that in **Figure 3**, the yellow pulse represents the current consumed by the CYW55513 connectivity module and the green pulse represents the current consumed by the PSOC&trade; Edge E84 MCU
-
 
 5. Measure the deep sleep current (with default router settings) between any two DTIM intervals in the CYW55513 module's current as shown in **Figure 4**
 
@@ -143,15 +141,19 @@ PSOC&trade; Edge E84 Evaluation Kit is a generic kit to evaluate the PSOC&trade;
 
 All measurements are made in the presence of external radio interference and not in an isolated environment with a single AP and kit. The average power consumption will vary between DTIM intervals. This is because of other activities in the Wi-Fi spectrum (2.4 GHz or 5 GHz) such as other Wi-Fi networks, Bluetooth&reg; (2.4 GHz), or Long-Term Evolution (LTE in 2.4 GHz) interference that increase the duration for which AIROC&trade; CYW55513 Wi-Fi & Bluetooth&reg; combo chip listens for DTIM packet from the AP. This type of activity increases the average power consumption. 
 
+These power values are not optimized for low power. See the [PSOC™ Edge MCU: Power measurements](https://github.com/Infineon/mtb-example-psoc-edge-power-measurements) code example for MCU power optimization and [AN241681](https://www.infineon.com/AN241681) - Low-power system design with PSOC&trade; Edge MCU and AIROC&trade; Wi-Fi & Bluetooth&reg; combo chip for CYW55513 optimization techniques .
+
+>**Note:** The power consumption of the PSOC&trade; Edge MCU is calculated using the formula ((VBAT current) x 3.3 V) + ((VDDD + VDDDIO) current x 1.8 V). Similarly, the power consumption of the CWY55513 is calculated as VBAT current x 3.3 V.
+
 **Table 1. Typical current values for PSOC&trade; Edge E84 MCU and CYW55513 connectivity module**
 
-State  | Device   | Current
+State  | Device   | Power
 -----------|------- | -------------
-Sleep  | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT)  | 54.2 uA <br> 54.45 uA
-Average current over 3 DTIM periods for AP (2.4 GHz) beacon interval of 100 and AP DTIM of 1  | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 54.2 uA <br> 715.46 uA
-Average current over 3 DTIM periods for AP (2.4 GHz) beacon interval of 100 and AP DTIM of 3 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 54.2 uA <br> 253.57 uA
-Average current over 3 DTIM periods for AP (5 GHz) beacon interval of 100 and AP DTIM of 1 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 54.2 uA <br> 540.26 uA
-Average current over 3 DTIM periods for AP (5 GHz) beacon interval of 100 and AP DTIM of 3 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 54.2 uA <br> 220.24 uA
+Sleep  | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT)  | 1.063 mW <br> 179.685 uW
+Average power over 3 DTIM periods for AP (2.4 GHz) beacon interval of 100 and AP DTIM of 1  | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 1.063 mW <br> 2.361 mW
+Average power over 3 DTIM periods for AP (2.4 GHz) beacon interval of 100 and AP DTIM of 3 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 1.063 mW <br> 836.781 uW
+Average power over 3 DTIM periods for AP (5 GHz) beacon interval of 100 and AP DTIM of 1 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 1.063 mW <br> 1.782 mW
+Average power over 3 DTIM periods for AP (5 GHz) beacon interval of 100 and AP DTIM of 3 | PSOC&trade; Edge E84 MCU <br> CYW55513 (VBAT) | 1.063 mW <br> 726.792 uW
 
 <br>
 
@@ -183,6 +185,7 @@ Document title: *CE240066* – *PSOC&trade; Edge MCU: WLAN low power*
  ------- | ---------------------
  1.x.0   | New code example <br> Early access release
  2.0.0   | GitHub release
+ 2.0.1   | Updated README.md
 <br>
 
 
