@@ -8,14 +8,14 @@ This code example has a three project structure: CM33 secure, CM33 non-secure, a
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc-edge-wlan-lowpower)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDAwNjYiLCJTcGVjIE51bWJlciI6IjAwMi00MDA2NiIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBXTEFOIGxvdyBwb3dlciIsInJpZCI6InN1cmVzaGt1bWFyYSIsIkRvYyB2ZXJzaW9uIjoiMi4wLjEiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://yourvoice.infineon.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDAwNjYiLCJTcGVjIE51bWJlciI6IjAwMi00MDA2NiIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IEVkZ2UgTUNVOiBXTEFOIGxvdyBwb3dlciIsInJpZCI6ImFydmluZGt1bWFyLnN1cmVzaGt1bWFyQGluZmluZW9uLmNvbSIsIkRvYyB2ZXJzaW9uIjoiMi4xLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
 See the [Design and implementation](docs/design_and_implementation.md) for the functional description of this code example.
 
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.6 or later (tested with v3.6)
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.7 or later (tested with v3.9)
 - Board support package (BSP) minimum required version: 1.0.0
 - Programming language: C
 - Associated parts: All [PSOC&trade; Edge MCU](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm) parts
@@ -25,8 +25,8 @@ See the [Design and implementation](docs/design_and_implementation.md) for the f
 
 - GNU Arm&reg; Embedded Compiler v14.2.1 (`GCC_ARM`) – Default value of `TOOLCHAIN`
 - Arm&reg; Compiler v6.22 (`ARM`)
-- IAR C/C++ Compiler v9.50.2 (`IAR`)
-- LLVM Embedded Toolchain for Arm&reg; v19.1.5 (`LLVM_ARM`)
+- IAR C/C++ Compiler v9.70.4 (`IAR`)
+- Arm&reg; Toolchain for Embedded v22.1 (`LLVM_ARM`)
 
 
 ## Supported kits (make variable 'TARGET')
@@ -186,6 +186,7 @@ Document title: *CE240066* – *PSOC&trade; Edge MCU: WLAN low power*
  1.x.0   | New code example <br> Early access release
  2.0.0   | GitHub release
  2.0.1   | Updated README.md
+ 2.1.0   | Updated to support wifi-core-freertos-lwip-mbedtls v4.X
 <br>
 
 
